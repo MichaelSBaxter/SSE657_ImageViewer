@@ -15,3 +15,15 @@ D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project
 C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\bin\Release\ImageViewer.exe.config
 C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer.exe
 C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer.pdb
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\bin\Release\ImageViewer.exe
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\bin\Release\ImageViewer.pdb
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\MainWindow.g.cs
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\App.g.cs
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer_MarkupCompile.cache
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer_MarkupCompile.lref
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\MainWindow.baml
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer.g.resources
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer.Properties.Resources.resources
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Release\ImageViewer.csproj.GenerateResource.Cache

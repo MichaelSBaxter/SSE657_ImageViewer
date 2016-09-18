@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Image Viewer" Height="350" Width="525">
     <Window.Resources>
-        <local:ImageManager x:Key="imageManager"/>
+        <local:ImageDisplayManager x:Key="imageDisplayManager"/>
     </Window.Resources>
     <DockPanel x:Name="mainDock">
         <Menu DockPanel.Dock="Top" x:Name="menu" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=mainDock}" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
@@ -15,7 +15,7 @@
                 <MenuItem Header="Open" Click="MenuItem_Open"/>
             </MenuItem>
         </Menu>
-        <Grid x:Name="displayGrid" DockPanel.Dock="Bottom" Width="{Binding ActualWidth, ElementName=mainDock}" DataContext="{StaticResource ResourceKey=imageManager}">
+        <Grid x:Name="displayGrid" DockPanel.Dock="Bottom" Width="{Binding ActualWidth, ElementName=mainDock}" DataContext="{StaticResource imageDisplayManager}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -23,7 +23,26 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Rectangle Grid.Row="0" Grid.Column="0" Height="{Binding ActualHeight, ElementName=displayGrid}" Width="{Binding ActualWidth, ElementName=displayGrid}" Fill="Black" IsHitTestVisible="False"/>
-            <Image x:Name="image" Grid.Row="0" Grid.Column="0" Height="{Binding CurrentImageHeight}" Width="{Binding CurrentImageWidth}"  Source="{Binding CurrentImage}"/>
+            <ScrollViewer VerticalScrollBarVisibility="{Binding VerticalScrollBar}" HorizontalScrollBarVisibility="{Binding HorizontalScrollBar}">
+                <ItemsControl Name="canvasItemControl" Grid.Row="0" Grid.Column="0" Height="{Binding ActualHeight, ElementName=displayGrid}" Width="{Binding ActualWidth, ElementName=displayGrid}" MouseDoubleClick="canvasItemControl_MouseDoubleClick">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas ClipToBounds="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Left" Value="{Binding Left}"/>
+                            <Setter Property="Canvas.Top" Value="{Binding Top}"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Source}" Height="{Binding Height}" Width="{Binding Width}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </DockPanel>
 </Window>

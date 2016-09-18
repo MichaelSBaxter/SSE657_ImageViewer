@@ -13,3 +13,18 @@ D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project
 D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.exe
 D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.pdb
 D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe.config
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.exe
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.pdb
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\bin\Debug\ImageViewer.pdb
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\MainWindow.g.cs
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\App.g.cs
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.cache
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.lref
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\MainWindow.baml
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.g.resources
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.Properties.Resources.resources
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.csproj.GenerateResource.Cache
+C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs

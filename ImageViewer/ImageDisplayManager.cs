@@ -18,36 +18,18 @@ namespace ImageViewer
 
     class ImageDisplayManager : INotifyPropertyChanged
     {
-        private System.Windows.Controls.ScrollBarVisibility verticalScrollBar = System.Windows.Controls.ScrollBarVisibility.Hidden;
-        public System.Windows.Controls.ScrollBarVisibility VerticalScrollBar
-        {
-            get { return verticalScrollBar; }
-            set
-            {
-                verticalScrollBar = value;
-                OnPropertyChanged("VerticalScrollBar");
-            }
-        }
-
-        public System.Windows.Controls.ScrollBarVisibility horizontalScrollBar = System.Windows.Controls.ScrollBarVisibility.Hidden;
-        public System.Windows.Controls.ScrollBarVisibility HorizontalScrollBar
-        {
-            get { return horizontalScrollBar; }
-            set
-            {
-                horizontalScrollBar = value;
-                OnPropertyChanged("HorizontalScrollBar");
-            }
-        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<ImageDisplayInfo> DisplayImages;
 
-        public ImageDisplayMode DisplayMode;
+        private ImageDisplayMode DisplayMode;
+
+        private ImageDatabase loadedImages;
 
         public ImageDisplayManager()
         {
             DisplayImages = new ObservableCollection<ImageDisplayInfo>();
+            loadedImages = new ImageDatabase();
             DisplayMode = ImageDisplayMode.Window;
         }
 
@@ -59,9 +41,8 @@ namespace ImageViewer
                 {
                     imageInfo.Height = height;
                     imageInfo.Width = width;
-
-                    VerticalScrollBar = System.Windows.Controls.ScrollBarVisibility.Hidden;
-                    HorizontalScrollBar = System.Windows.Controls.ScrollBarVisibility.Hidden;
+                    imageInfo.Top = 0;
+                    imageInfo.Left = 0;
                 }
             }
             else if(displayMode == ImageDisplayMode.Actual)
@@ -71,22 +52,22 @@ namespace ImageViewer
                     imageInfo.Height = imageInfo.Source.Height;
                     imageInfo.Width = imageInfo.Source.Width;
 
-                    if(imageInfo.Height > height)
+                    if(width > imageInfo.Source.Width)
                     {
-                        VerticalScrollBar = System.Windows.Controls.ScrollBarVisibility.Visible;
+                        imageInfo.Left = (int) ((width - imageInfo.Source.Width) / 2);
                     }
                     else
                     {
-                        VerticalScrollBar = System.Windows.Controls.ScrollBarVisibility.Hidden;
+                        imageInfo.Left = 0;
                     }
 
-                    if (imageInfo.Width > width)
+                    if(height > imageInfo.Source.Height)
                     {
-                        HorizontalScrollBar = System.Windows.Controls.ScrollBarVisibility.Visible;
+                        imageInfo.Top = (int)((height - imageInfo.Source.Height) / 2);
                     }
                     else
                     {
-                        HorizontalScrollBar = System.Windows.Controls.ScrollBarVisibility.Hidden;
+                        imageInfo.Top = 0;
                     }
                 }
             }
@@ -94,42 +75,73 @@ namespace ImageViewer
 
         public void RefitWindow(double width, double height)
         {
-            if(DisplayMode == ImageDisplayMode.Window)
-            {
-                Resize(DisplayMode, width, height);
-            }
+            Resize(DisplayMode, width, height);        
         }
 
-        public void ChangeDisplayMode(double width, double height)
+        public void SetDisplayMode(ImageDisplayMode mode, double width, double height)
         {
-            if (DisplayMode == ImageDisplayMode.Actual)
-                DisplayMode = ImageDisplayMode.Window;
-            else if(DisplayMode == ImageDisplayMode.Window)
-                DisplayMode = ImageDisplayMode.Actual;
+            DisplayMode = mode;
 
             Resize(DisplayMode, width, height);
         }
 
-        public void SetSingleImage(string path)
+        public void SetNextDisplayMode(double width, double height)
         {
-            ImageSource image = new BitmapImage(new Uri(path));
-            ImageDisplayInfo imageInfo = new ImageDisplayInfo(image, path, 0, 0, image.Width, image.Height);
-            
-            DisplayImages.Clear();
-            DisplayImages.Add(imageInfo);
+            if (DisplayMode == ImageDisplayMode.Actual)
+                SetDisplayMode(ImageDisplayMode.Window, width, height);
+            else if (DisplayMode == ImageDisplayMode.Window)
+                SetDisplayMode(ImageDisplayMode.Actual, width, height);
         }
 
-        public void SetSingleImage(string path, double width, double height)
+        public void LoadNewImage(string path, double width, double height)
         {
-            ImageSource image = new BitmapImage(new Uri(path));
+            loadedImages.LoadNewImage(path);
+            SetDisplayedImage(path, width, height);
+        }
 
-            int left = (int)(image.Width - width) / 2;
-            int top = (int)(image.Height - height) / 2;
+        public void SetDisplayedImage(string path, double width, double height)
+        {
+            ImageSource image = loadedImages.GetImage(path);
+            DisplayMode = ImageDisplayMode.Window;
 
-            ImageDisplayInfo imageInfo = new ImageDisplayInfo(image, path, 0, -1, width, height);
+            if (image != null)
+            {
+                ChangeDisplayedImage(image, width, height);
+            }
+        }
+
+        public void SetDisplayedImageNext(double width, double height)
+        {
+            ImageSource image = loadedImages.GetNextImage();
+
+            if(image != null)
+            {
+                ChangeDisplayedImage(image, width, height);
+            }
+        }
+
+        public void SetDisplayedImagePrevious(double width, double height)
+        {
+            ImageSource image = loadedImages.GetPreviousImage();
+
+            if (image != null)
+            {
+                ChangeDisplayedImage(image, width, height);
+            }
+        }
+
+        private void ChangeDisplayedImage(ImageSource image, double width, double height)
+        {
+            ImageDisplayInfo imageInfo = new ImageDisplayInfo(image, 0, 0, width, height);
+
+            if((width > image.Width) && (height > image.Height))
+                DisplayMode = ImageDisplayMode.Actual;                   
+            else
+                DisplayMode = ImageDisplayMode.Window;                   
 
             DisplayImages.Clear();
             DisplayImages.Add(imageInfo);
+            RefitWindow(width, height);
         }
 
         private void OnPropertyChanged(string name)

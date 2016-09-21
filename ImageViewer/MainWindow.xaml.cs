@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using System.Threading.Tasks;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -51,7 +51,7 @@ namespace ImageViewer
         {
             OpenFileDialog openDialog = new OpenFileDialog();
 
-            openDialog.Filter = "Image Files (.jpg)|*.jpg";
+            openDialog.Filter = ExtensionManager.GetExtensionFilters();
             openDialog.Title = "Select an Image File";
             openDialog.FilterIndex = 0;
             openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -59,13 +59,49 @@ namespace ImageViewer
             var result = openDialog.ShowDialog();
             if(result.GetValueOrDefault() == true)
             {
-                imageDisplayManager.SetSingleImage(openDialog.FileName, displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.LoadNewImage(openDialog.FileName, displayGrid.ActualWidth, displayGrid.ActualHeight);
+            }
+        }
+        
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Right)
+            {
+                imageDisplayManager.SetDisplayedImageNext(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            }
+            else if (e.Key == Key.Left)
+            {
+                imageDisplayManager.SetDisplayedImagePrevious(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            }   
+        }
+
+        private void behindCanvasRectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount > 1)
+            {
+                imageDisplayManager.SetNextDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
+                e.Handled = true;
             }
         }
 
-        private void canvasItemControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void MenuItem_FitImage(object sender, RoutedEventArgs e)
         {
-            imageDisplayManager.ChangeDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.SetDisplayMode(ImageDisplayMode.Window, displayGrid.ActualWidth, displayGrid.ActualHeight);
+        }
+
+        private void MenuItem_ActualImageSize(object sender, RoutedEventArgs e)
+        {
+            imageDisplayManager.SetDisplayMode(ImageDisplayMode.Actual, displayGrid.ActualWidth, displayGrid.ActualHeight);
+        }
+
+        private void MenuItem_PreviousImage(object sender, RoutedEventArgs e)
+        {
+            imageDisplayManager.SetDisplayedImagePrevious(displayGrid.ActualWidth, displayGrid.ActualHeight);
+        }
+
+        private void MenuItem_NextImage(object sender, RoutedEventArgs e)
+        {
+            imageDisplayManager.SetDisplayedImageNext(displayGrid.ActualWidth, displayGrid.ActualHeight);
         }
     }
 }

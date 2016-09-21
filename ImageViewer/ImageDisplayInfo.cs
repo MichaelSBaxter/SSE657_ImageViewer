@@ -23,16 +23,6 @@ namespace ImageViewer
                 OnPropertyChanged("Source");
             }
         }
-        private string path;
-        public string Path
-        {
-            get { return path; }
-            set
-            {
-                path = value;
-                OnPropertyChanged("Path");
-            }
-        }
 
         private int left;
         public int Left
@@ -80,44 +70,34 @@ namespace ImageViewer
 
         public ImageDisplayInfo()
         {
-            Path = "";
+            this.Source = null;
             this.Top = 0;
             this.Left = 0;
             this.Width = 0;
             this.Height = 0;
         }
 
-        public ImageDisplayInfo(string path)
-        {
-            Path = path;
-            this.Top = 0;
-            this.Left = 0;
-            this.Width = 0;
-            this.Height = 0;
-        }
-
-        public ImageDisplayInfo(string path, int top, int left)
-        {
-            this.Path = path;
-            this.Top = top;
-            this.Left = left;
-            this.Width = 0;
-            this.Height = 0;
-        }
-
-        public ImageDisplayInfo(string path, int top, int left, double width, double height)
-        {
-            this.Path = path;
-            this.Top = top;
-            this.Left = left;
-            this.Width = width;
-            this.Height = height;
-        }
-
-        public ImageDisplayInfo(ImageSource source, string path, int top, int left, double width, double height)
+        public ImageDisplayInfo(ImageSource source)
         {
             this.Source = source;
-            this.Path = path;
+            this.Top = 0;
+            this.Left = 0;
+            this.Width = 0;
+            this.Height = 0;
+        }
+
+        public ImageDisplayInfo(ImageSource source, int top, int left)
+        {
+            this.Source = source;
+            this.Top = top;
+            this.Left = left;
+            this.Width = 0;
+            this.Height = 0;
+        }
+
+        public ImageDisplayInfo(ImageSource source, int top, int left, double width, double height)
+        {
+            this.Source = source;
             this.Top = top;
             this.Left = left;
             this.Width = width;

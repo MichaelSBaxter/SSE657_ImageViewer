@@ -28,3 +28,33 @@ C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\Image
 C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.Properties.Resources.resources
 C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\ImageViewer.csproj.GenerateResource.Cache
 C:\Users\Michael\Documents\GitHub\SSE657_ImageViewer\ImageViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe.config
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.exe
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.pdb
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\MainWindow.g.cs
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\App.g.cs
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.cache
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.lref
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\bin\Debug\ImageViewer.pdb
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\MainWindow.baml
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.g.resources
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.Properties.Resources.resources
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csproj.GenerateResource.Cache
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 1\Image Viewer Prototype\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csprojResolveAssemblyReference.cache
+C:\Test Programs\ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe.config
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.exe
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.pdb
+C:\Test Programs\ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe
+C:\Test Programs\ImageViewer\ImageViewer\bin\Debug\ImageViewer.pdb
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\MainWindow.g.cs
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\App.g.cs
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.cache
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.lref
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\MainWindow.baml
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.g.resources
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.Properties.Resources.resources
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csproj.GenerateResource.Cache
+C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csprojResolveAssemblyReference.cache

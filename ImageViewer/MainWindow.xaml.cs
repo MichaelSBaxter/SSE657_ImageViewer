@@ -44,7 +44,7 @@ namespace ImageViewer
 
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            imageDisplayManager.RefitWindow(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.Resize(displayGrid.ActualWidth, displayGrid.ActualHeight);
         }
 
         private void MenuItem_Open(object sender, RoutedEventArgs e)
@@ -79,19 +79,14 @@ namespace ImageViewer
         {
             if (e.ClickCount > 1)
             {
-                imageDisplayManager.SetNextDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.NextDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
                 e.Handled = true;
             }
         }
 
-        private void MenuItem_FitImage(object sender, RoutedEventArgs e)
-        {
-            imageDisplayManager.SetDisplayMode(ImageDisplayMode.Window, displayGrid.ActualWidth, displayGrid.ActualHeight);
-        }
-
         private void MenuItem_ActualImageSize(object sender, RoutedEventArgs e)
         {
-            imageDisplayManager.SetDisplayMode(ImageDisplayMode.Actual, displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.NextDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
         }
 
         private void MenuItem_PreviousImage(object sender, RoutedEventArgs e)

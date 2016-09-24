@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using System.Threading.Tasks;
+using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
@@ -10,19 +10,17 @@ using System.Windows.Media.Imaging;
 
 namespace ImageViewer
 {
-    enum ImageDisplayMode
-    {
-        Actual,
-        Window
-    }
+enum ImageDisplayMode
+{
+    Actual,
+    Window
+}
 
-    class ImageDisplayManager : INotifyPropertyChanged
+    class ImageDisplayManager
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ObservableCollection<ImageDisplayInfo> DisplayImages;
 
-        private ImageDisplayMode DisplayMode;
+        private ImageDisplayMode displayMode;
 
         private ImageDatabase loadedImages;
 
@@ -30,10 +28,10 @@ namespace ImageViewer
         {
             DisplayImages = new ObservableCollection<ImageDisplayInfo>();
             loadedImages = new ImageDatabase();
-            DisplayMode = ImageDisplayMode.Window;
+            displayMode = ImageDisplayMode.Window;
         }
 
-        public void Resize(ImageDisplayMode displayMode, double width, double height)
+        public void Resize(double width, double height)
         {
             if(displayMode == ImageDisplayMode.Window)
             {
@@ -73,24 +71,14 @@ namespace ImageViewer
             }
         }
 
-        public void RefitWindow(double width, double height)
+        public void NextDisplayMode(double width, double height)
         {
-            Resize(DisplayMode, width, height);        
-        }
-
-        public void SetDisplayMode(ImageDisplayMode mode, double width, double height)
-        {
-            DisplayMode = mode;
-
-            Resize(DisplayMode, width, height);
-        }
-
-        public void SetNextDisplayMode(double width, double height)
-        {
-            if (DisplayMode == ImageDisplayMode.Actual)
-                SetDisplayMode(ImageDisplayMode.Window, width, height);
-            else if (DisplayMode == ImageDisplayMode.Window)
-                SetDisplayMode(ImageDisplayMode.Actual, width, height);
+            if (displayMode == ImageDisplayMode.Actual)
+                displayMode = ImageDisplayMode.Window;
+            else if (displayMode == ImageDisplayMode.Window)
+                displayMode = ImageDisplayMode.Actual;
+            
+            Resize(width, height);
         }
 
         public void LoadNewImage(string path, double width, double height)
@@ -102,7 +90,7 @@ namespace ImageViewer
         public void SetDisplayedImage(string path, double width, double height)
         {
             ImageSource image = loadedImages.GetImage(path);
-            DisplayMode = ImageDisplayMode.Window;
+            displayMode = ImageDisplayMode.Window;
 
             if (image != null)
             {
@@ -135,20 +123,13 @@ namespace ImageViewer
             ImageDisplayInfo imageInfo = new ImageDisplayInfo(image, 0, 0, width, height);
 
             if((width > image.Width) && (height > image.Height))
-                DisplayMode = ImageDisplayMode.Actual;                   
+                displayMode = ImageDisplayMode.Actual;                   
             else
-                DisplayMode = ImageDisplayMode.Window;                   
+                displayMode = ImageDisplayMode.Window;                   
 
             DisplayImages.Clear();
             DisplayImages.Add(imageInfo);
-            RefitWindow(width, height);
-        }
-
-        private void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler propertyChanged = PropertyChanged;
-            if (propertyChanged != null)
-                propertyChanged(this, new PropertyChangedEventArgs(name));
+            Resize(width, height);
         }
     }
 }

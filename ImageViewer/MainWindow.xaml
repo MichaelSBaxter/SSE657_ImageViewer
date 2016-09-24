@@ -11,14 +11,22 @@
     </Window.Resources>
     <DockPanel x:Name="mainDock">
         <Menu DockPanel.Dock="Top" x:Name="menu" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=mainDock}" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
-            <MenuItem Header="Open" Click="MenuItem_Open"/>
-            <MenuItem Header="Fit" Click="MenuItem_FitImage"/>
-            <MenuItem Header="Actual" Click="MenuItem_ActualImageSize"/>
-            <MenuItem Header="Previous Image" Click="MenuItem_PreviousImage" />
-            <MenuItem Header="Next Image" Click="MenuItem_NextImage"/>
-            <!-- <MenuItem Header="_File">
-                <MenuItem Header="Open" Click="MenuItem_Open"/>
-            </MenuItem> -->
+            <MenuItem Header="Open" Click="MenuItem_Open" />
+            <MenuItem Width="24" Click="MenuItem_ActualImageSize" ToolTip="Scale to Image Actual Size">
+                <MenuItem.Icon>
+                    <Image Source="icons/Fit.png" Height="14"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="24" Click="MenuItem_PreviousImage" ToolTip="Previous Image">
+                <MenuItem.Icon>
+                    <Image Source="icons/LeftArrow.png" Height="14"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="24" Click="MenuItem_NextImage" ToolTip="Next Image">
+                <MenuItem.Icon>
+                    <Image Source="icons/RightArrow.png" Height="14"/>
+                </MenuItem.Icon>
+            </MenuItem>
         </Menu>
         <Grid x:Name="displayGrid" DockPanel.Dock="Bottom" Width="{Binding ActualWidth, ElementName=mainDock}" DataContext="{StaticResource imageDisplayManager}">
             <Grid.ColumnDefinitions>

@@ -10,13 +10,13 @@ using System.Windows.Media.Imaging;
 
 namespace ImageViewer
 {
-enum ImageDisplayMode
-{
-    Actual,
-    Window
-}
+    enum ImageDisplayMode
+    {
+        Actual,
+        Window
+    }
 
-    class ImageDisplayManager
+    public class ImageDisplayManager
     {
         public ObservableCollection<ImageDisplayInfo> DisplayImages;
 

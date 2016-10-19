@@ -1,16 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ImageViewer
-{  
-    static class ExtensionManager
+{
+    public enum RecognizedExtension
     {
-        static private List<string> extensions = new List<string>() { ".jpg" };
+        Jpeg,
+        Png,
+        Unsupported
+    }
 
-        public static string GetExtensionFilters()
+    public class ExtensionManager
+    {
+        static private ExtensionManager instance = null;
+
+        private List<string> extensions = new List<string>() { ".jpg", ".png" };
+        private List<RecognizedExtension> extensionsEnums = new List<RecognizedExtension>() { RecognizedExtension.Jpeg, RecognizedExtension.Png };
+
+        public static ExtensionManager GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ExtensionManager();
+            }
+
+            return instance;
+        }
+
+        public string GetExtensionFilters()
         {
             int i = 0;
             string filter = "Image Files (";
@@ -39,7 +60,23 @@ namespace ImageViewer
             return filter;           
         }
 
-        public static bool isValidExtension(string extension)
+        public RecognizedExtension GetExtensionType(string file)
+        {
+            int i;
+            string extension = Path.GetExtension(file);
+
+            for (i = 0; i < extensions.Count(); i++)
+            {
+                if (extension == extensions[i])
+                {
+                    return extensionsEnums[i];
+                }
+            }
+
+            return RecognizedExtension.Unsupported;
+        }
+
+        public bool IsValidExtension(string extension)
         {
             return extensions.Contains(extension);
         }

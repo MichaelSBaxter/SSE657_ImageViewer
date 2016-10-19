@@ -8,9 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace ImageViewer
-{
-    
-    class ImageDatabase
+{  
+    public class ImageDatabase
     {
         private List<ImageSource> images;
         public List<ImageSource> Images
@@ -50,6 +49,7 @@ namespace ImageViewer
         private void LoadDirectory(string folderPath)
         {
             string[] files = Directory.GetFiles(folderPath);
+            ExtensionManager manager = ExtensionManager.GetInstance();
 
             images.Clear();
 
@@ -57,7 +57,7 @@ namespace ImageViewer
             {
                 string extension = Path.GetExtension(file);
 
-                if(ExtensionManager.isValidExtension(extension))
+                if (manager.IsValidExtension(extension))
                 {
                     ImageSource image = new BitmapImage(new Uri(file));
                     images.Add(image);

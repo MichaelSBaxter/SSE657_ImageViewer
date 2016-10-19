@@ -50,8 +50,9 @@ namespace ImageViewer
         private void MenuItem_Open(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openDialog = new OpenFileDialog();
+            ExtensionManager manager = ExtensionManager.GetInstance();
 
-            openDialog.Filter = ExtensionManager.GetExtensionFilters();
+            openDialog.Filter = manager.GetExtensionFilters();
             openDialog.Title = "Select an Image File";
             openDialog.FilterIndex = 0;
             openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);

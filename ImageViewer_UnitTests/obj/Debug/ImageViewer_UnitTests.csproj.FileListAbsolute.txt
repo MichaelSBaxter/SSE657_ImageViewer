@@ -1,0 +1,8 @@
+F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer_UnitTests\obj\Debug\ImageViewer_UnitTests.csprojResolveAssemblyReference.cache
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\obj\Debug\ImageViewer_UnitTests.csprojResolveAssemblyReference.cache
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\bin\Debug\ImageViewer_UnitTests.dll
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\bin\Debug\ImageViewer_UnitTests.pdb
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\bin\Debug\ImageViewer.exe
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\bin\Debug\ImageViewer.pdb
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\obj\Debug\ImageViewer_UnitTests.dll
+C:\Test Programs\ImageViewer\ImageViewer_UnitTests\obj\Debug\ImageViewer_UnitTests.pdb

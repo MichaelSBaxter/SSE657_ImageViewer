@@ -67,15 +67,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IImageLoadingAdapter.cs" />
     <Compile Include="ImageDatabase.cs" />
     <Compile Include="ImageDisplayManager.cs" />
     <Compile Include="ImageDisplayInfo.cs" />
+    <Compile Include="ImageLoadingFactory.cs" />
+    <Compile Include="JpgLoadingAdapter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PngLoadingAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

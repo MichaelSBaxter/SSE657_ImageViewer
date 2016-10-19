@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace ImageViewer
 {
-    class ImageDisplayInfo : INotifyPropertyChanged
+    public class ImageDisplayInfo : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

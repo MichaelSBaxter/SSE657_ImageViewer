@@ -70,3 +70,15 @@ F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\Ima
 F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.cache
 F:\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.lref
 C:\Test Programs\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csprojResolveAssemblyReference.cache
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\bin\Debug\ImageViewer.exe
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\bin\Debug\ImageViewer.pdb
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csprojResolveAssemblyReference.cache
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\MainWindow.g.cs
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\App.g.cs
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.cache
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer_MarkupCompile.lref
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\MainWindow.baml
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer.g.resources
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer.Properties.Resources.resources
+D:\Documents\College\Fall 2016\SSE 657 - Object-Oriented Project Methods\Project 2\ImageViewer\ImageViewer\obj\Debug\ImageViewer.csproj.GenerateResource.Cache

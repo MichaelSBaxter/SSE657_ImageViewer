@@ -57,6 +57,9 @@
     <Compile Include="JpgLoadingAdapterTests.cs" />
     <Compile Include="PngLoadingAdapterTests.cs" />
     <Compile Include="ImageLoadingFactoryTests.cs" />
+    <Compile Include="ImageDisplayManagerTests.cs" />
+    <Compile Include="FitWindowStrategyTests.cs" />
+    <Compile Include="ActualSizeStrategyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageViewer\ImageViewer.csproj">

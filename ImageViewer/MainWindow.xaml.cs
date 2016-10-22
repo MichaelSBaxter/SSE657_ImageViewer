@@ -44,7 +44,8 @@ namespace ImageViewer
 
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            imageDisplayManager.Resize(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.UpdateDisplaySize(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.Resize();
         }
 
         private void MenuItem_Open(object sender, RoutedEventArgs e)
@@ -60,7 +61,9 @@ namespace ImageViewer
             var result = openDialog.ShowDialog();
             if(result.GetValueOrDefault() == true)
             {
-                imageDisplayManager.LoadNewImage(openDialog.FileName, displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.LoadNewImage(openDialog.FileName);
+                imageDisplayManager.UpdateDisplaySize(displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.Resize();
             }
         }
         
@@ -68,11 +71,13 @@ namespace ImageViewer
         {
             if(e.Key == Key.Right)
             {
-                imageDisplayManager.SetDisplayedImageNext(displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.SetDisplayedImageNext();
+                imageDisplayManager.Resize();
             }
             else if (e.Key == Key.Left)
             {
-                imageDisplayManager.SetDisplayedImagePrevious(displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.SetDisplayedImagePrevious();
+                imageDisplayManager.Resize();
             }   
         }
 
@@ -80,24 +85,28 @@ namespace ImageViewer
         {
             if (e.ClickCount > 1)
             {
-                imageDisplayManager.NextDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
+                imageDisplayManager.NextDisplayMode();
+                imageDisplayManager.Resize();
                 e.Handled = true;
             }
         }
 
         private void MenuItem_ActualImageSize(object sender, RoutedEventArgs e)
         {
-            imageDisplayManager.NextDisplayMode(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.NextDisplayMode();
+            imageDisplayManager.Resize();
         }
 
         private void MenuItem_PreviousImage(object sender, RoutedEventArgs e)
         {
-            imageDisplayManager.SetDisplayedImagePrevious(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.SetDisplayedImagePrevious();
+            imageDisplayManager.Resize();
         }
 
         private void MenuItem_NextImage(object sender, RoutedEventArgs e)
         {
-            imageDisplayManager.SetDisplayedImageNext(displayGrid.ActualWidth, displayGrid.ActualHeight);
+            imageDisplayManager.SetDisplayedImageNext();
+            imageDisplayManager.Resize();
         }
     }
 }

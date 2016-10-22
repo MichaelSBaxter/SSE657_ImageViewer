@@ -59,7 +59,10 @@ namespace ImageViewer
 
                 if (manager.IsValidExtension(extension))
                 {
-                    ImageSource image = new BitmapImage(new Uri(file));
+                    var factory = ImageLoadingFactory.GetInstance();
+                    var adapter = factory.GetImageLoadingAdapter(file);
+
+                    ImageSource image = adapter.LoadImage(file);
                     images.Add(image);
                 }
             }

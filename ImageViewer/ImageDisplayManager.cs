@@ -10,126 +10,92 @@ using System.Windows.Media.Imaging;
 
 namespace ImageViewer
 {
-    enum ImageDisplayMode
-    {
-        Actual,
-        Window
-    }
-
     public class ImageDisplayManager
     {
         public ObservableCollection<ImageDisplayInfo> DisplayImages;
 
-        private ImageDisplayMode displayMode;
-
         private ImageDatabase loadedImages;
+
+        private FitWindowStrategy fitWindowStrategy;
+        private ActualSizeStrategy actualSizeStrategy;
+        private IImageSizingStrategy currentSizingStrategy;
+
+        private double displayWidth;
+        private double displayHeight;
 
         public ImageDisplayManager()
         {
             DisplayImages = new ObservableCollection<ImageDisplayInfo>();
             loadedImages = new ImageDatabase();
-            displayMode = ImageDisplayMode.Window;
+            fitWindowStrategy = new FitWindowStrategy();
+            actualSizeStrategy = new ActualSizeStrategy();
+            currentSizingStrategy = fitWindowStrategy;
+            displayWidth = 0;
+            displayHeight = 0;
         }
 
-        public void Resize(double width, double height)
+        public void UpdateDisplaySize(double width, double height)
         {
-            if(displayMode == ImageDisplayMode.Window)
-            {
-                foreach(ImageDisplayInfo imageInfo in DisplayImages)
-                {
-                    imageInfo.Height = height;
-                    imageInfo.Width = width;
-                    imageInfo.Top = 0;
-                    imageInfo.Left = 0;
-                }
-            }
-            else if(displayMode == ImageDisplayMode.Actual)
-            {
-                foreach (ImageDisplayInfo imageInfo in DisplayImages)
-                {
-                    imageInfo.Height = imageInfo.Source.Height;
-                    imageInfo.Width = imageInfo.Source.Width;
-
-                    if(width > imageInfo.Source.Width)
-                    {
-                        imageInfo.Left = (int) ((width - imageInfo.Source.Width) / 2);
-                    }
-                    else
-                    {
-                        imageInfo.Left = 0;
-                    }
-
-                    if(height > imageInfo.Source.Height)
-                    {
-                        imageInfo.Top = (int)((height - imageInfo.Source.Height) / 2);
-                    }
-                    else
-                    {
-                        imageInfo.Top = 0;
-                    }
-                }
-            }
+            displayWidth = width;
+            displayHeight = height;
         }
 
-        public void NextDisplayMode(double width, double height)
+        public void Resize()
         {
-            if (displayMode == ImageDisplayMode.Actual)
-                displayMode = ImageDisplayMode.Window;
-            else if (displayMode == ImageDisplayMode.Window)
-                displayMode = ImageDisplayMode.Actual;
-            
-            Resize(width, height);
+            foreach (ImageDisplayInfo imageInfo in DisplayImages)
+            {
+                var geo = currentSizingStrategy.GetGeometry(displayWidth, displayHeight, imageInfo.Source.Width, imageInfo.Source.Height);
+
+                imageInfo.Height = geo.Height;
+                imageInfo.Width = geo.Width;
+                imageInfo.Top = geo.Top;
+                imageInfo.Left = geo.Left;
+            }   
         }
 
-        public void LoadNewImage(string path, double width, double height)
+        public void NextDisplayMode()
+        {
+            if (currentSizingStrategy == actualSizeStrategy)
+                currentSizingStrategy = fitWindowStrategy;
+            else if (currentSizingStrategy == fitWindowStrategy)
+                currentSizingStrategy = actualSizeStrategy;
+        }
+
+        public void LoadNewImage(string path)
         {
             loadedImages.LoadNewImage(path);
-            SetDisplayedImage(path, width, height);
+            SetDisplayedImage(path);
         }
 
-        public void SetDisplayedImage(string path, double width, double height)
-        {
-            ImageSource image = loadedImages.GetImage(path);
-            displayMode = ImageDisplayMode.Window;
-
-            if (image != null)
-            {
-                ChangeDisplayedImage(image, width, height);
-            }
+        public void SetDisplayedImage(string path)
+        {             
+            ChangeDisplayedImage(loadedImages.GetImage(path));
         }
 
-        public void SetDisplayedImageNext(double width, double height)
+        public void SetDisplayedImageNext()
         {
-            ImageSource image = loadedImages.GetNextImage();
+            ChangeDisplayedImage(loadedImages.GetNextImage());
+        }
 
+        public void SetDisplayedImagePrevious()
+        {
+            ChangeDisplayedImage(loadedImages.GetPreviousImage());
+        }
+
+        private void ChangeDisplayedImage(ImageSource image)
+        {
             if(image != null)
             {
-                ChangeDisplayedImage(image, width, height);
+                ImageDisplayInfo imageInfo = new ImageDisplayInfo(image, 0, 0, displayWidth, displayHeight);
+
+                if ((displayWidth > image.Width) && (displayHeight > image.Height))
+                    currentSizingStrategy = actualSizeStrategy;
+                else
+                    currentSizingStrategy = fitWindowStrategy;
+
+                DisplayImages.Clear();
+                DisplayImages.Add(imageInfo);
             }
-        }
-
-        public void SetDisplayedImagePrevious(double width, double height)
-        {
-            ImageSource image = loadedImages.GetPreviousImage();
-
-            if (image != null)
-            {
-                ChangeDisplayedImage(image, width, height);
-            }
-        }
-
-        private void ChangeDisplayedImage(ImageSource image, double width, double height)
-        {
-            ImageDisplayInfo imageInfo = new ImageDisplayInfo(image, 0, 0, width, height);
-
-            if((width > image.Width) && (height > image.Height))
-                displayMode = ImageDisplayMode.Actual;                   
-            else
-                displayMode = ImageDisplayMode.Window;                   
-
-            DisplayImages.Clear();
-            DisplayImages.Add(imageInfo);
-            Resize(width, height);
         }
     }
 }
